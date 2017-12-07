@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -34,11 +35,17 @@ public class MovieController {
         return "redirect:/";
     }
 
+/*
+    @PutMapping("/")
+    public void updateMovie(Movie movie) {
+        movieRepository.updateMovie(movie);
+    }
+*/
+
     @GetMapping("/film")
     public String filmDetails(Model model, @RequestParam Long id) {
         Movie movie = movieRepository.findOne(id);
         model.addAttribute("movie", movie);
         return "movieDetails";
     }
-
 }
